@@ -4,7 +4,7 @@ export interface Todo {
     completed: boolean;
 }
 
-export interface TodoGroup {
+export interface TodoList {
     id: string;
     name: string;
     todos: Todo[];
