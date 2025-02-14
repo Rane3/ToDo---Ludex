@@ -1,7 +1,7 @@
 import React from 'react';
 import { TodoGroup } from '../types/todo';
 import { FC } from 'react';
-const TodoListNav: FC<TodoGroup> = (props) => {
+const ListNav: FC<TodoGroup> = (props) => {
     return (
         <nav>
             <h2>Todo List Navigation</h2>
@@ -10,4 +10,4 @@ const TodoListNav: FC<TodoGroup> = (props) => {
     );
 };
 
-export default TodoListNav;
+export default ListNav;

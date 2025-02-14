@@ -2,7 +2,7 @@ import React from 'react';
 import { FC } from 'react';
 import { TodoList } from '../types/todo';
 
-const TodoList:FC<TodoList> = (props) => {
+const TodoListView:FC<TodoList> = (props) => {
     return (
         <nav>
             <h2>Todo List</h2> 
@@ -11,4 +11,4 @@ const TodoList:FC<TodoList> = (props) => {
     );
 };
 
-export default TodoList;
+export default TodoListView;

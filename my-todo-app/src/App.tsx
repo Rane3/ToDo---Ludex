@@ -1,14 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {TodoList} from './components/TodoList';
-import {TodoListNav} from './components/TodoListNav';
+import TodoList from './components/TodoList.tsx';
+import TodoListNav from './components/TodoListNav.tsx';
 
 function App() {
   return (
     <div className="App">
-      <TodoListNav />
-      <TodoList />
+      <TodoListNav id={''} name={''} todoList={[]}  />
+      <TodoList id={''} todos={[]} />
     </div>
   );
 }
