@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { TodoList } from '../types/todo';
-import  '../styles/NavBarStyles.css';
+import '../styles/NavBarStyles.css';
 
 type TodoListProps = {
     toDoLists: TodoList[];
@@ -27,15 +27,12 @@ const ListNav: FC<TodoListProps> = ({ toDoLists, setToDoLists }) => {
     return (
         <nav id='list-nav'>
             <div id='nav-top'>
-
-                <ul>
-                    {toDoLists.map((list) => (
-                        <li key={list.id}>{list.name}</li>
-                    ))}
-                </ul>
+                {toDoLists.map((list) => (
+                    <div className='list-item'><img className='item-icon' src='/icons/homework.png' alt='icon' /><button className='list-item-button' key={list.id}>{list.name}</button></div>
+                ))}
             </div>
             <div id='nav-bottom'>
-                <input type="text" 
+                <input type="text"
                     value={newListName}
                     onChange={(e) => setNewListName(e.target.value)} name="text" className="custom-input" placeholder="Add List"></input>
                 <button className='add-button' onClick={addTodoList}>+</button>
