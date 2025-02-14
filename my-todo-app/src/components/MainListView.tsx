@@ -4,7 +4,7 @@ import { TodoList } from '../types/todo';
 
 const MainListView:FC<TodoList> = (props) => {
     return (
-       <section className='main-list-view'>
+       <section id='main-list-view'>
 
        </section>
     );

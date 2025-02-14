@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
+import './styles/App.css';
 import { TodoList } from './types/todo.ts';
 import ListNav from './components/ListsNav.tsx';
+import MainListView from './components/MainListView.tsx';
 
 
 function App() {
@@ -14,10 +15,10 @@ function App() {
   ]);
   const [selectedList, setSelectedList] = useState<TodoList>(todoLists[0]);
   return (
-    <div className="App">
+      <>
       <ListNav toDoLists={todoLists} setToDoLists={setTodoLists} />
-      {/* Add TodoList here if todoLists */}
-    </div>
+      <MainListView {...selectedList} />
+      </>
   );
 }
 

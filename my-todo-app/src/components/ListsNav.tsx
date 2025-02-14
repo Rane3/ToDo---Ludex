@@ -24,7 +24,7 @@ const ListNav: FC<TodoListProps> = ({ toDoLists, setToDoLists }) => {
     };
 
     return (
-        <nav className='list-nav'>
+        <nav id='list-nav'>
             <h2>Todo List Navigation</h2>
             <ul>
                 {toDoLists.map((list) => ( 
