@@ -1,7 +1,7 @@
 import React from 'react';
-import { TodoList } from '../types/todo';
+import { TodoGroup } from '../types/todo';
 
-const TodoListNav: React.FC<TodoList> = (props) => {
+const TodoListNav: React.FC<TodoGroup> = (props) => {
     return (
         <nav>
             <h2>Todo List Navigation</h2>
