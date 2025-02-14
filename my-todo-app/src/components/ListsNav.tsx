@@ -15,7 +15,7 @@ const ListNav: FC<TodoListProps> = ({ toDoLists, setToDoLists }) => {
         const newList = {
             id: crypto.randomUUID(),
             name: newListName,
-            todos: [],
+            todoItems: [],
         };
 
         setToDoLists((prevLists) => [...prevLists, newList]); 
@@ -24,7 +24,7 @@ const ListNav: FC<TodoListProps> = ({ toDoLists, setToDoLists }) => {
     };
 
     return (
-        <nav>
+        <nav className='list-nav'>
             <h2>Todo List Navigation</h2>
             <ul>
                 {toDoLists.map((list) => ( 
