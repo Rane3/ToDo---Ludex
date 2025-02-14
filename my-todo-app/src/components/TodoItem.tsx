@@ -1,13 +1,33 @@
 import React from 'react';
 import { FC } from 'react';
 import { Todo } from '../types/todo';
-const TodoListItem:FC<Todo> = ({props}) => {
+
+type TodoItemProps = Todo & {
+    setCompleted: (id: string, completed: boolean) => void;
+};
+
+const TodoItem: FC<TodoItemProps> = ({ id, text, completed, setCompleted }) => {
+    const handleCheckboxChange = () => {
+        setCompleted(id, !completed);
+    };
+
     return (
-        <nav>
-            <h2>Todo List Navigation</h2>
-            {/* Add navigation items here */}
-        </nav>
+        <div className="todo-item" key={id}>
+            <div className="checkbox-wrapper-31">
+                <input
+                    checked={completed}
+                    onChange={handleCheckboxChange}
+                    type="checkbox"
+                />
+                <svg viewBox="0 0 35.6 35.6">
+                    <circle className="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                    <circle className="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                    <polyline className="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                </svg>
+            </div>
+            <span className='todo-item-text'>{text}</span>
+        </div>
     );
 };
 
-export default TodoListItem;
+export default TodoItem;
