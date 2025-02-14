@@ -8,7 +8,7 @@
 
 #main-view-top {
     display: flex;
-    flex: 5 1 ;
+    flex: 5 1;
 }
 
 #main-list-view {
@@ -16,7 +16,9 @@
     flex-direction: column;
 
 }
-.add-task-input{
+
+.add-task-input {
+    display: flex;
     font-weight: 500;
     font-size: .8vw;
     color: #fff;
@@ -29,8 +31,33 @@
     transition: .4s;
     height: 3rem;
     width: 80%;
+    align-items: center;
+    align-content: center;
 }
+.add-task-input input:focus-visible {
+   outline: none;
+}
+.add-task-input input {
+    background: transparent;
+    border: none;
+    caret-color: white; 
+    font-size: large;
+    margin-left: 0.3rem;
+    width: 100%;
+    height: 100%;
+}
+
+.add-task-input img {
+    width: 50px;
+    border-radius: 50px;
+    transition: 0.4s;
+}
+
+.add-task-input img:hover {
+    box-shadow: inset 0px 0px 4px 1px #918f8f;
+}
+
 .add-task-input:hover,
-.add-task-input:focus{
+.add-task-input:focus {
     box-shadow: 0 0 0px 1px rgb(255 255 255 / 50%), 0 0 0 .15vw transparent;
 }

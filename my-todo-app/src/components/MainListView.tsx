@@ -9,10 +9,13 @@ const MainListView: FC<TodoList> = (props) => {
 
             </div>
             <div id="main-view-bottom">
-            <input type="text"
-               
-                    name="text" className="add-task-input" placeholder="Add Task"></input>
+                <div className="add-task-input" >
+                    <img className='item-icon'  src='/icons/send.png' alt='icon' />
+                    <input type="text"
+                        name="text" placeholder="Add Task"></input>
+                </div>
             </div>
+
         </section>
     );
 };
