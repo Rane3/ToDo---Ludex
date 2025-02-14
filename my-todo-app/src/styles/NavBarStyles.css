@@ -57,9 +57,12 @@
   background: transparent;
   border: none;
   font-size: 1.3em;
-  padding: 0rem 1.3rem;
+  margin: 0rem 0.3rem;
+  padding: 0rem 0.7rem;
+  word-wrap: break-word;
   display: flex;
   color: white;
+  cursor:pointer;
   border-radius: 8px;
   transition: 0.4s;
   text-align: start;
@@ -68,6 +71,7 @@
 }
 
 .list-item:hover {
+ 
   background: #80808026;
 }
 
@@ -78,6 +82,7 @@
 .list-item-button {
   width: 100%;
   height: 100%;
+  cursor:pointer;
   background: transparent;
   color: #c3c2c2;
   margin-left: 0.5rem;
@@ -89,7 +94,7 @@
 /* Ui verse https://uiverse.io/Jaareet/serious-lionfish-75 */
 .custom-input {
   font-weight: 500;
-  font-size: .8vw;
+  font-size: 1.2rem;
   color: #fff;
   background-color: rgb(26 26 26);
   box-shadow: 0 0 0px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
