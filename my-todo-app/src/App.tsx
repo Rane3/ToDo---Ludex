@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import TodoList from './components/TodoList.tsx';
-import TodoListNav from './components/TodoListNav.tsx';
+import { TodoList } from './types/todo.ts';
+import ListNav from './components/TodoListNav.tsx';
+
 
 function App() {
+  const [todoLists, setTodoLists] = useState<TodoList[]>([]);
+
   return (
     <div className="App">
-      <TodoListNav id={''} name={''} todoList={[]}  />
-      <TodoList id={''} todos={[]} />
+      <ListNav toDoLists={todoLists} setToDoLists={setTodoLists} />
+      {/* Add TodoList here if todoLists */}
     </div>
   );
 }
