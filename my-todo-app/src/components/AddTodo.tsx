@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { FC } from 'react';
 import { Todo } from '../types/todo';
 const TodoListNav = (text:string) :Todo => {
     return (
