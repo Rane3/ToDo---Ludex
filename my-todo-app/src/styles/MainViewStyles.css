@@ -1,0 +1,36 @@
+#main-view-bottom {
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#main-view-top {
+    display: flex;
+    flex: 5 1 ;
+}
+
+#main-list-view {
+    display: flex;
+    flex-direction: column;
+
+}
+.add-task-input{
+    font-weight: 500;
+    font-size: .8vw;
+    color: #fff;
+    background-color: rgb(26 26 26);
+    box-shadow: 0 0 0px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
+    border-radius: 0.4vw;
+    border: none;
+    outline: none;
+    padding: 0.4vw;
+    transition: .4s;
+    height: 3rem;
+    width: 80%;
+}
+.add-task-input:hover,
+.add-task-input:focus{
+    box-shadow: 0 0 0px 1px rgb(255 255 255 / 50%), 0 0 0 .15vw transparent;
+}

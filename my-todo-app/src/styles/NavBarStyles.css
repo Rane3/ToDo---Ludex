@@ -38,13 +38,13 @@
   color: white;
   background-color: rgb(26 26 26);
   display: flex;
-  box-shadow: 0 0 10px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
+  box-shadow: 0 0 0px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
   flex-direction: row;
   justify-content: center;
 }
 
 .add-button:hover {
-  box-shadow: 0 0 11px .15vw rgb(249 249 249 / 19%);
+  box-shadow: 0 0 5px .15vw rgb(249 249 249 / 19%);
 }
 
 .add-button:active {
@@ -92,7 +92,7 @@
   font-size: .8vw;
   color: #fff;
   background-color: rgb(26 26 26);
-  box-shadow: 0 0 10px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
+  box-shadow: 0 0 0px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
   border-radius: 0.4vw;
   border: none;
   outline: none;
@@ -106,7 +106,7 @@
 
 .custom-input:hover,
 .custom-input:focus {
-  box-shadow: 0 0 11px .15vw rgb(249 249 249 / 19%);
+  box-shadow: 0 0 5px .15vw rgb(249 249 249 / 19%);
 }
 
 

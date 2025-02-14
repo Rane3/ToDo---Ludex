@@ -1,12 +1,19 @@
 import React from 'react';
 import { FC } from 'react';
 import { TodoList } from '../types/todo';
-
-const MainListView:FC<TodoList> = (props) => {
+import '../styles/MainViewStyles.css';
+const MainListView: FC<TodoList> = (props) => {
     return (
-       <section id='main-list-view'>
+        <section id='main-list-view'>
+            <div id="main-view-top">
 
-       </section>
+            </div>
+            <div id="main-view-bottom">
+            <input type="text"
+               
+                    name="text" className="add-task-input" placeholder="Add Task"></input>
+            </div>
+        </section>
     );
 };
 
