@@ -11,6 +11,7 @@ const TodoItem: FC<TodoItemProps> = ({ todo, setCompleted, deleteTodo }) => {
     };
 
     return (
+
         <div className="todo-item" key={todo.id}>
             <div className="checkbox-wrapper-31">
                 <input
@@ -24,10 +25,12 @@ const TodoItem: FC<TodoItemProps> = ({ todo, setCompleted, deleteTodo }) => {
                     <polyline className="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
                 </svg>
             </div>
-           
+
             <span className='todo-item-text'>{todo.text}</span>
-            <button onClick={() => deleteTodo(todo.id)} >X</button>
+            <button className='todo-item-delete' onClick={() => deleteTodo(todo.id)} ><img src='/icons/delete.png'/></button>      
         </div>
+
+
     );
 };
 

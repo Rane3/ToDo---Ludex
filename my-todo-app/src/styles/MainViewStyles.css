@@ -22,7 +22,8 @@
     flex-direction: column;
 
 }
-#list-header{
+
+#list-header {
     padding-left: 5rem;
 
     padding-bottom: 2rem;
@@ -50,11 +51,13 @@
 .add-task-input input:focus-visible {
     outline: none;
 }
-#invisible-button{
+
+#invisible-button {
     background: transparent;
     border: transparent;
     cursor: pointer;
 }
+
 .add-task-input input {
     background: transparent;
     border: none;
@@ -108,8 +111,27 @@
 
 .todo-item-text {
     margin-left: 1rem;
+    flex: 16;
 }
 
+
+
+.todo-item-delete {
+    flex: 1;
+    background: transparent;
+    border: transparent;
+   
+}
+.todo-item-delete img{
+    transition: 0.4s;
+    border-radius: 10px;
+
+}
+.todo-item-delete img:hover {
+    box-shadow: inset 0px 0px 20px 14px #ff000085;
+    margin: 0;
+    padding: 0;
+}
 
 
 /* https://uiverse.io/guilhermeyohan/white-cheetah-13 */
