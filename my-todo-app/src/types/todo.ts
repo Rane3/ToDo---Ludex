@@ -18,6 +18,7 @@ export interface TodoListProps  {
 
 export interface  TodoItemProps  {
     todo: Todo;
+    deleteTodo: (id: string) => void;
     setCompleted: (id: string, completed: boolean) => void;
 };
 export interface TodoFilterProps{

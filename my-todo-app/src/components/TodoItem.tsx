@@ -4,7 +4,7 @@ import { TodoItemProps } from '../types/todo';
 
 
 
-const TodoItem: FC<TodoItemProps> = ({ todo, setCompleted }) => {
+const TodoItem: FC<TodoItemProps> = ({ todo, setCompleted, deleteTodo }) => {
     const handleCheckboxChange = () => {
         console.log(!todo.completed)
         setCompleted(todo.id, !todo.completed);
@@ -24,7 +24,9 @@ const TodoItem: FC<TodoItemProps> = ({ todo, setCompleted }) => {
                     <polyline className="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
                 </svg>
             </div>
+           
             <span className='todo-item-text'>{todo.text}</span>
+            <button onClick={() => deleteTodo(todo.id)} >X</button>
         </div>
     );
 };

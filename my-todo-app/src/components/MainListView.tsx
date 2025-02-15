@@ -41,6 +41,12 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
     const fillerCount = 20 - filteredTodos.length;
     const fillerItems = Array(fillerCount).fill(null);
 
+    const deleteTodo = (id: string) => {
+        setcurrentTodoItems((prevItems) =>
+            prevItems.filter((item) => item.id !== id)
+        );
+    };
+
     return (
         <section id='main-list-view'>
             <div id="main-view-top">
@@ -50,7 +56,7 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
                 </div>
                 {filteredTodos.map((todo) => (
        
-                    <TodoItem key={todo.id} todo={todo} setCompleted={setCompleted} />
+                    <TodoItem deleteTodo={deleteTodo} key={todo.id} todo={todo} setCompleted={setCompleted} />
                 ))}
                 {fillerItems.map((_, index) => (
                     <div key={`filler-${index}`} className='filler-item'></div>
