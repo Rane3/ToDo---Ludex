@@ -20,3 +20,7 @@ export interface  TodoItemProps  {
     todo: Todo;
     setCompleted: (id: string, completed: boolean) => void;
 };
+export interface TodoFilterProps{
+    currentFilter: string;
+    setFilter: React.Dispatch<React.SetStateAction<string>>;
+}

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState,FC } from "react";
 import "../styles/TodoFilterStyles.css";
 import React from 'react';
+import { TodoFilterProps } from "../types/todo";
 
-const TodoFilters = () => {
-  const [selectedFilter, setSelectedFilter] = useState("View All");
+const TodoFilters: FC<TodoFilterProps> = ({ currentFilter, setFilter }) => {
+
 
   return (
     <div className="project-filters-box" data-aos="fade-up">
@@ -14,8 +15,8 @@ const TodoFilters = () => {
               id={filter}
               type="radio"
               name="todoFilter"
-              checked={selectedFilter === filter}
-              onChange={() => setSelectedFilter(filter)}
+              checked={currentFilter === filter}
+              onChange={() => setFilter(filter)}
             />
             <div className="transition"></div>
           </label>

@@ -9,6 +9,7 @@ import TodoFilters from './TodoFilters.tsx';
 const MainListView: FC<TodoList> = ({ todoItems, name }) => {
     const [currentTodo, setCurrentTodo] = useState('');
     const [currentTodoItems, setcurrentTodoItems] = useState(todoItems);
+    const [currentFilter, setFilter] = useState('View All');
     useEffect(() => {
         setcurrentTodoItems(todoItems);
     }, [todoItems]);
@@ -32,8 +33,12 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
         setcurrentTodoItems((prevLists) => [...prevLists, newTodo]);
 
     };
-
-    const fillerCount = 20 - todoItems.length;
+    const filteredTodos = currentTodoItems.filter((todo) => {
+        if (currentFilter === 'Completed') return todo.completed;
+        if (currentFilter === 'Pending') return !todo.completed;
+        return true;
+    });
+    const fillerCount = 20 - filteredTodos.length;
     const fillerItems = Array(fillerCount).fill(null);
 
     return (
@@ -41,9 +46,10 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
             <div id="main-view-top">
                 <div id="main-view-top-filters">
                     <div id='list-header'>{name}</div>
-                        <TodoFilters /> 
+                        <TodoFilters currentFilter={currentFilter} setFilter={setFilter} /> 
                 </div>
-                {currentTodoItems.map((todo) => (
+                {filteredTodos.map((todo) => (
+       
                     <TodoItem key={todo.id} todo={todo} setCompleted={setCompleted} />
                 ))}
                 {fillerItems.map((_, index) => (
