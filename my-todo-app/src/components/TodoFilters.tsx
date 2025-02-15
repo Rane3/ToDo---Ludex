@@ -1,4 +1,4 @@
-import { useState,FC } from "react";
+import { FC } from "react";
 import "../styles/TodoFilterStyles.css";
 import React from 'react';
 import { TodoFilterProps } from "../types/todo";

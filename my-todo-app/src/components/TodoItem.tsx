@@ -9,7 +9,7 @@ import { TodoItemProps } from '../types/todo';
  */
 const TodoItem: FC<TodoItemProps> = ({ listId, todo, setCompleted, deleteTodo }) => {
     const handleCheckboxChange = () => {
-        console.log(!todo.completed)
+    
         setCompleted(todo.id, !todo.completed);
     };
     return (

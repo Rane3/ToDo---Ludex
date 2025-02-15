@@ -23,7 +23,7 @@ export interface  TodoItemProps  {
     listId: string;
     deleteTodo: (id: string) => void;
     setCompleted: (id: string, completed: boolean) => void;
-};
+}
 //Filters interface
 export interface TodoFilterProps{
     currentFilter: string;

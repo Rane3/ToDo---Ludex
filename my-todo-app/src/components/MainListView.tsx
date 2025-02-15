@@ -60,7 +60,7 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
             <div id="main-view-top">
                 <div id="main-view-top-filters">
                     <div id='list-header'>{name}</div>
-                    {/* <Switch/> */}
+                    <Switch/>
                     <TodoFilters currentFilter={currentFilter} setFilter={setFilter} />
                 </div>
                 {filteredTodos.map((todo) => (
