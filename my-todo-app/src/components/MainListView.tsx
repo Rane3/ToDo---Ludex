@@ -1,62 +1,63 @@
-import React from 'react';
-import { FC, useState, useEffect } from 'react';
-import { TodoList } from '../types/todo';
+import React, { FC, useState, useEffect } from 'react';
+import { SelectedTodoList } from '../types/todo';
 import TodoItem from '../components/TodoItem.tsx';
-
 import '../styles/MainViewStyles.css';
 import TodoFilters from './TodoFilters.tsx';
 
-const MainListView: FC<TodoList> = ({ todoItems, name }) => {
+const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
     const [currentTodo, setCurrentTodo] = useState('');
-    const [currentTodoItems, setcurrentTodoItems] = useState(todoItems);
+    const [currentTodoItems, setCurrentTodoItems] = useState(todoItems || []);
     const [currentFilter, setFilter] = useState('View All');
+
     useEffect(() => {
-        setcurrentTodoItems(todoItems);
-    }, [todoItems]);
+        // Sync todo items with localStorage
+        localStorage.setItem('todoItems', JSON.stringify(currentTodoItems));
+    }, [currentTodoItems]);
 
     const setCompleted = (id: string, completed: boolean) => {
-        setcurrentTodoItems((prevItems) =>
+        setCurrentTodoItems((prevItems) =>
             prevItems.map((item) =>
                 item.id === id ? { ...item, completed } : item
             )
         );
     };
+
     const addTodoItem = () => {
         if (!currentTodo.trim()) return;
-
         const newTodo = {
             id: crypto.randomUUID(),
             text: currentTodo,
             completed: false,
+            listId:id
         };
-
-        setcurrentTodoItems((prevLists) => [...prevLists, newTodo]);
-
+        setCurrentTodoItems((prevLists) => [...prevLists, newTodo]);
+        setCurrentTodo('');
     };
+
+    const deleteTodo = (id: string) => {
+        setCurrentTodoItems((prevItems) =>
+            prevItems.filter((item) => item.id !== id)
+        );
+    };
+
     const filteredTodos = currentTodoItems.filter((todo) => {
         if (currentFilter === 'Completed') return todo.completed;
         if (currentFilter === 'Pending') return !todo.completed;
         return true;
     });
+
     const fillerCount = 20 - filteredTodos.length;
     const fillerItems = Array(fillerCount).fill(null);
-
-    const deleteTodo = (id: string) => {
-        setcurrentTodoItems((prevItems) =>
-            prevItems.filter((item) => item.id !== id)
-        );
-    };
 
     return (
         <section id='main-list-view'>
             <div id="main-view-top">
                 <div id="main-view-top-filters">
                     <div id='list-header'>{name}</div>
-                        <TodoFilters currentFilter={currentFilter} setFilter={setFilter} /> 
+                    <TodoFilters currentFilter={currentFilter} setFilter={setFilter} />
                 </div>
                 {filteredTodos.map((todo) => (
-       
-                    <TodoItem deleteTodo={deleteTodo} key={todo.id} todo={todo} setCompleted={setCompleted} />
+                    <TodoItem listId={id} deleteTodo={deleteTodo} key={todo.id} todo={todo} setCompleted={setCompleted} />
                 ))}
                 {fillerItems.map((_, index) => (
                     <div key={`filler-${index}`} className='filler-item'></div>
@@ -64,8 +65,10 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
             </div>
             <div id="main-view-bottom">
                 <div className="add-task-input">
-                    <button onClick={addTodoItem} id="invisible-button"><img className='item-icon' src='/icons/send.png' alt='icon' /></button>
-                    <input value={currentTodo} type="text" name="text" onChange={(e) => setCurrentTodo(e.target.value)} placeholder="Add Task"></input>
+                    <button onClick={addTodoItem} id="invisible-button">
+                        <img className='item-icon' src='/icons/send.png' alt='icon' />
+                    </button>
+                    <input value={currentTodo} type="text" name="text" onChange={(e) => setCurrentTodo(e.target.value)} placeholder="Add Task" />
                 </div>
             </div>
         </section>

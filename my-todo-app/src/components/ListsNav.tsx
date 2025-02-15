@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react';
-import { TodoList, TodoListProps } from '../types/todo';
+import React, { FC, useEffect, useState } from 'react';
+import { SelectedTodoList, TodoListProps } from '../types/todo';
+import { useLocalStorage } from '../localStorage/localStorage.tsx'; 
 import '../styles/NavBarStyles.css';
-
 
 const ListNav: FC<TodoListProps> = ({ todoLists, setSelectedList, setToDoLists }) => {
     const [newListName, setNewListName] = useState('');
+    const [storedTodoLists, setStoredTodoLists] = useLocalStorage<SelectedTodoList[]>('todoLists', todoLists);
 
     const addTodoList = () => {
         if (!newListName.trim()) return; // Prevent adding empty list names
@@ -15,15 +16,19 @@ const ListNav: FC<TodoListProps> = ({ todoLists, setSelectedList, setToDoLists }
             todoItems: [],
         };
 
-        setToDoLists((prevLists) => [...prevLists, newList]);
-
-        setNewListName('');
+        // Update localStorage with the new list
+        setStoredTodoLists((prevLists) => [...prevLists, newList]);
+        setNewListName(''); // Clear the input
     };
+
+    useEffect(() => {
+        setToDoLists(storedTodoLists);
+    }, [storedTodoLists, setToDoLists]);
 
     return (
         <nav id='list-nav'>
             <div id='nav-top'>
-                {todoLists.map((list) => (
+                {storedTodoLists.map((list) => (
                     <div className='list-item' key={list.id}>
                         <img className='item-icon' src='/icons/homework.png' alt='icon' />
                         <button onClick={() => setSelectedList(list)} className='list-item-button'>{list.name}</button>
