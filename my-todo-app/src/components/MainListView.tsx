@@ -1,8 +1,10 @@
 import React from 'react';
-import { FC,useState,useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { TodoList } from '../types/todo';
 import TodoItem from '../components/TodoItem.tsx';
+
 import '../styles/MainViewStyles.css';
+import TodoFilters from './TodoFilters.tsx';
 
 const MainListView: FC<TodoList> = ({ todoItems, name }) => {
     const [currentTodo, setCurrentTodo] = useState('');
@@ -10,7 +12,7 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
     useEffect(() => {
         setcurrentTodoItems(todoItems);
     }, [todoItems]);
-    
+
     const setCompleted = (id: string, completed: boolean) => {
         setcurrentTodoItems((prevItems) =>
             prevItems.map((item) =>
@@ -19,7 +21,7 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
         );
     };
     const addTodoItem = () => {
-        if (!currentTodo.trim()) return; 
+        if (!currentTodo.trim()) return;
 
         const newTodo = {
             id: crypto.randomUUID(),
@@ -37,7 +39,10 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
     return (
         <section id='main-list-view'>
             <div id="main-view-top">
-                <span id='list-header'>{name}</span>
+                <div id="main-view-top-filters">
+                    <div id='list-header'>{name}</div>
+                        <TodoFilters /> 
+                </div>
                 {currentTodoItems.map((todo) => (
                     <TodoItem key={todo.id} todo={todo} setCompleted={setCompleted} />
                 ))}
@@ -48,7 +53,7 @@ const MainListView: FC<TodoList> = ({ todoItems, name }) => {
             <div id="main-view-bottom">
                 <div className="add-task-input">
                     <button onClick={addTodoItem} id="invisible-button"><img className='item-icon' src='/icons/send.png' alt='icon' /></button>
-                    <input value={currentTodo} type="text" name="text"  onChange={(e) => setCurrentTodo(e.target.value)}  placeholder="Add Task"></input>
+                    <input value={currentTodo} type="text" name="text" onChange={(e) => setCurrentTodo(e.target.value)} placeholder="Add Task"></input>
                 </div>
             </div>
         </section>
