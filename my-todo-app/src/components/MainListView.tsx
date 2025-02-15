@@ -21,6 +21,7 @@ const MainListView: FC<TodoList> = (props) => {
     return (
         <section id='main-list-view'>
             <div id="main-view-top">
+                <span id='list-header'>{props.name}</span>
                 {todoItems.map((todo) => (
                     <TodoItem key={todo.id} {...todo} setCompleted={setCompleted} />
                 ))}
