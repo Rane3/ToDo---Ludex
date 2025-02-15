@@ -10,3 +10,7 @@ export interface TodoList {
     name: string;
 }
 
+export interface TodoListProps  {
+    toDoLists: TodoList[];
+    setToDoLists: React.Dispatch<React.SetStateAction<TodoList[]>>;
+};

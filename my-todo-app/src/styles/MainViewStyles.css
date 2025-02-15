@@ -50,7 +50,11 @@
 .add-task-input input:focus-visible {
     outline: none;
 }
-
+#invisible-button{
+    background: transparent;
+    border: transparent;
+    cursor: pointer;
+}
 .add-task-input input {
     background: transparent;
     border: none;
@@ -86,6 +90,7 @@
     width: 90%;
     min-height: 5rem;
     background: #2d2d2de0;
+    margin-top: 18px;
     border-radius: 10px;
     padding-left: 1.2rem;
     box-shadow: 0px 0px 0px 2px #4b4b4b;

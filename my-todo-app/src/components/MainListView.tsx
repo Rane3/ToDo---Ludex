@@ -5,9 +5,8 @@ import TodoItem from '../components/TodoItem.tsx';
 import '../styles/MainViewStyles.css';
 
 const MainListView: FC<TodoList> = (props) => {
-   
+    const [currentTodo, setCurrentTodo] = useState('');
     const [todoItems, setTodoItems] = useState(props.todoItems);
-
     const setCompleted = (id: string, completed: boolean) => {
         setTodoItems((prevItems) =>
             prevItems.map((item) =>
@@ -15,6 +14,19 @@ const MainListView: FC<TodoList> = (props) => {
             )
         );
     };
+    const addTodoItem = () => {
+        if (!currentTodo.trim()) return; // Prevent adding empty list names
+
+        const newTodo = {
+            id: crypto.randomUUID(),
+            text: currentTodo,
+            completed: false,
+        };
+
+        setTodoItems((prevLists) => [...prevLists, newTodo]);
+        
+    };
+
     const fillerCount = 20 - props.todoItems.length;
     const fillerItems = Array(fillerCount).fill(null);
 
@@ -31,8 +43,8 @@ const MainListView: FC<TodoList> = (props) => {
             </div>
             <div id="main-view-bottom">
                 <div className="add-task-input">
-                    <img className='item-icon' src='/icons/send.png' alt='icon' />
-                    <input type="text" name="text" placeholder="Add Task"></input>
+                    <button onClick={addTodoItem} id="invisible-button"><img className='item-icon' src='/icons/send.png' alt='icon' /></button>
+                    <input value={currentTodo} type="text" name="text"  onChange={(e) => setCurrentTodo(e.target.value)}  placeholder="Add Task"></input>
                 </div>
             </div>
         </section>
