@@ -1,21 +1,20 @@
 import React from 'react';
 import { FC } from 'react';
-import { Todo } from '../types/todo';
+import { TodoItemProps } from '../types/todo';
 
-type TodoItemProps = Todo & {
-    setCompleted: (id: string, completed: boolean) => void;
-};
 
-const TodoItem: FC<TodoItemProps> = ({ id, text, completed, setCompleted }) => {
+
+const TodoItem: FC<TodoItemProps> = ({ todo, setCompleted }) => {
     const handleCheckboxChange = () => {
-        setCompleted(id, !completed);
+        console.log(!todo.completed)
+        setCompleted(todo.id, !todo.completed);
     };
 
     return (
-        <div className="todo-item" key={id}>
+        <div className="todo-item" key={todo.id}>
             <div className="checkbox-wrapper-31">
                 <input
-                    checked={completed}
+                    checked={todo.completed}
                     onChange={handleCheckboxChange}
                     type="checkbox"
                 />
@@ -25,7 +24,7 @@ const TodoItem: FC<TodoItemProps> = ({ id, text, completed, setCompleted }) => {
                     <polyline className="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
                 </svg>
             </div>
-            <span className='todo-item-text'>{text}</span>
+            <span className='todo-item-text'>{todo.text}</span>
         </div>
     );
 };

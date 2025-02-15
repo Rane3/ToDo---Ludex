@@ -4,18 +4,19 @@ import { TodoList } from '../types/todo';
 import TodoItem from '../components/TodoItem.tsx';
 import '../styles/MainViewStyles.css';
 
-const MainListView: FC<TodoList> = (props) => {
+const MainListView: FC<TodoList> = ({ todoItems, name }) => {
     const [currentTodo, setCurrentTodo] = useState('');
-    const [todoItems, setTodoItems] = useState(props.todoItems);
+    const [currentTodoItems, setcurrentTodoItems] = useState(todoItems);
+
     const setCompleted = (id: string, completed: boolean) => {
-        setTodoItems((prevItems) =>
+        setcurrentTodoItems((prevItems) =>
             prevItems.map((item) =>
                 item.id === id ? { ...item, completed } : item
             )
         );
     };
     const addTodoItem = () => {
-        if (!currentTodo.trim()) return; // Prevent adding empty list names
+        if (!currentTodo.trim()) return; 
 
         const newTodo = {
             id: crypto.randomUUID(),
@@ -23,19 +24,19 @@ const MainListView: FC<TodoList> = (props) => {
             completed: false,
         };
 
-        setTodoItems((prevLists) => [...prevLists, newTodo]);
-        
+        setcurrentTodoItems((prevLists) => [...prevLists, newTodo]);
+
     };
 
-    const fillerCount = 20 - props.todoItems.length;
+    const fillerCount = 20 - todoItems.length;
     const fillerItems = Array(fillerCount).fill(null);
 
     return (
         <section id='main-list-view'>
             <div id="main-view-top">
-                <span id='list-header'>{props.name}</span>
-                {todoItems.map((todo) => (
-                    <TodoItem key={todo.id} {...todo} setCompleted={setCompleted} />
+                <span id='list-header'>{name}</span>
+                {currentTodoItems.map((todo) => (
+                    <TodoItem key={todo.id} todo={todo} setCompleted={setCompleted} />
                 ))}
                 {fillerItems.map((_, index) => (
                     <div key={`filler-${index}`} className='filler-item'></div>

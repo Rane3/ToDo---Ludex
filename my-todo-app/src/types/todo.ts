@@ -11,6 +11,12 @@ export interface TodoList {
 }
 
 export interface TodoListProps  {
-    toDoLists: TodoList[];
+    todoLists: TodoList[];
     setToDoLists: React.Dispatch<React.SetStateAction<TodoList[]>>;
+    setSelectedList: React.Dispatch<React.SetStateAction<TodoList>>;
+}
+
+export interface  TodoItemProps  {
+    todo: Todo;
+    setCompleted: (id: string, completed: boolean) => void;
 };

@@ -16,7 +16,7 @@ function App() {
   const [selectedList, setSelectedList] = useState<TodoList>(todoLists[0]);
   return (
       <>
-      <ListNav toDoLists={todoLists} setToDoLists={setTodoLists} />
+      <ListNav todoLists={todoLists} setSelectedList={setSelectedList} setToDoLists={setTodoLists} />
       <MainListView {...selectedList} />
       </>
   );

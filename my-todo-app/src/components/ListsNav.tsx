@@ -3,7 +3,7 @@ import { TodoList, TodoListProps } from '../types/todo';
 import '../styles/NavBarStyles.css';
 
 
-const ListNav: FC<TodoListProps> = ({ toDoLists, setToDoLists }) => {
+const ListNav: FC<TodoListProps> = ({ todoLists, setSelectedList, setToDoLists }) => {
     const [newListName, setNewListName] = useState('');
 
     const addTodoList = () => {
@@ -23,10 +23,10 @@ const ListNav: FC<TodoListProps> = ({ toDoLists, setToDoLists }) => {
     return (
         <nav id='list-nav'>
             <div id='nav-top'>
-                {toDoLists.map((list) => (
+                {todoLists.map((list) => (
                     <div className='list-item' key={list.id}>
                         <img className='item-icon' src='/icons/homework.png' alt='icon' />
-                        <button className='list-item-button'>{list.name}</button>
+                        <button onClick={() => setSelectedList(list)} className='list-item-button'>{list.name}</button>
                     </div>
                 ))}
             </div>
