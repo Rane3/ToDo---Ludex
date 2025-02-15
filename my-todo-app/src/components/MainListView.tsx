@@ -1,5 +1,5 @@
 import React from 'react';
-import { FC,useState } from 'react';
+import { FC,useState,useEffect } from 'react';
 import { TodoList } from '../types/todo';
 import TodoItem from '../components/TodoItem.tsx';
 import '../styles/MainViewStyles.css';
@@ -7,7 +7,10 @@ import '../styles/MainViewStyles.css';
 const MainListView: FC<TodoList> = ({ todoItems, name }) => {
     const [currentTodo, setCurrentTodo] = useState('');
     const [currentTodoItems, setcurrentTodoItems] = useState(todoItems);
-
+    useEffect(() => {
+        setcurrentTodoItems(todoItems);
+    }, [todoItems]);
+    
     const setCompleted = (id: string, completed: boolean) => {
         setcurrentTodoItems((prevItems) =>
             prevItems.map((item) =>
