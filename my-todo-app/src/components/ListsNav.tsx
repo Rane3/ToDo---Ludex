@@ -1,26 +1,27 @@
 import React, { FC, useEffect, useState } from 'react';
 import { SelectedTodoList, TodoListProps } from '../types/todo';
-import { useLocalStorage } from '../localStorage/localStorage.tsx'; 
+import { useLocalStorage } from '../utils/localStorage.tsx'; 
 import '../styles/NavBarStyles.css';
 
+/**
+ * A component to display and manage the Todo Lists in the navigation bar.
+ * Allows the user to add a new list and select a list from the available ones.
+ */
 const ListNav: FC<TodoListProps> = ({ todoLists, setSelectedList, setToDoLists }) => {
+
     const [newListName, setNewListName] = useState('');
     const [storedTodoLists, setStoredTodoLists] = useLocalStorage<SelectedTodoList[]>('todoLists', todoLists);
 
     const addTodoList = () => {
-        if (!newListName.trim()) return; // Prevent adding empty list names
-
+        if (!newListName.trim()) return; 
         const newList = {
             id: crypto.randomUUID(),
             name: newListName,
             todoItems: [],
         };
-
-        // Update localStorage with the new list
         setStoredTodoLists((prevLists) => [...prevLists, newList]);
-        setNewListName(''); // Clear the input
+        setNewListName(''); 
     };
-
     useEffect(() => {
         setToDoLists(storedTodoLists);
     }, [storedTodoLists, setToDoLists]);

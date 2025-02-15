@@ -4,12 +4,14 @@ import { TodoItemProps } from '../types/todo';
 
 
 
-const TodoItem: FC<TodoItemProps> = ({ listId,todo, setCompleted, deleteTodo }) => {
+/**
+ * Used for displaying Todo item, and for deleting it. Uses listId to know which items to display
+ */
+const TodoItem: FC<TodoItemProps> = ({ listId, todo, setCompleted, deleteTodo }) => {
     const handleCheckboxChange = () => {
         console.log(!todo.completed)
         setCompleted(todo.id, !todo.completed);
     };
-
     return (
         <>
             {listId === todo.listId ? (
@@ -28,7 +30,7 @@ const TodoItem: FC<TodoItemProps> = ({ listId,todo, setCompleted, deleteTodo }) 
                     </div>
 
                     <span className='todo-item-text'>{todo.text}</span>
-                    <button className='todo-item-delete' onClick={() => deleteTodo(todo.id)} ><img src='/icons/delete.png'/></button>      
+                    <button className='todo-item-delete' onClick={() => deleteTodo(todo.id)} ><img src='/icons/delete.png' /></button>
                 </div>
             ) : null}
         </>

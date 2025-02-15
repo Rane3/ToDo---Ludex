@@ -1,16 +1,22 @@
 import React, { FC, useState, useEffect } from 'react';
-import { SelectedTodoList } from '../types/todo';
+import { SelectedTodoList,Todo } from '../types/todo';
 import TodoItem from '../components/TodoItem.tsx';
 import '../styles/MainViewStyles.css';
 import TodoFilters from './TodoFilters.tsx';
+import Switch from './ThemeSwitch.tsx';
 
+import { useLocalStorage } from '../utils/localStorage.tsx'; 
+
+/**
+ * Main view, allows users to add toDo's delete them and move them 
+ */
 const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
     const [currentTodo, setCurrentTodo] = useState('');
-    const [currentTodoItems, setCurrentTodoItems] = useState(todoItems || []);
-    const [currentFilter, setFilter] = useState('View All');
 
+    const [currentTodoItems, setCurrentTodoItems] = useLocalStorage<Todo[]>('todoItems', todoItems);
+    const [currentFilter, setFilter] = useState('View All');
+    //Used to sync currentTodoItems with Local Storage
     useEffect(() => {
-        // Sync todo items with localStorage
         localStorage.setItem('todoItems', JSON.stringify(currentTodoItems));
     }, [currentTodoItems]);
 
@@ -21,7 +27,7 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
             )
         );
     };
-
+    //Creates new todo item with the current list id
     const addTodoItem = () => {
         if (!currentTodo.trim()) return;
         const newTodo = {
@@ -46,14 +52,15 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
         return true;
     });
 
+    //Adds filler div elements
     const fillerCount = 20 - filteredTodos.length;
     const fillerItems = Array(fillerCount).fill(null);
-
     return (
         <section id='main-list-view'>
             <div id="main-view-top">
                 <div id="main-view-top-filters">
                     <div id='list-header'>{name}</div>
+                    {/* <Switch/> */}
                     <TodoFilters currentFilter={currentFilter} setFilter={setFilter} />
                 </div>
                 {filteredTodos.map((todo) => (

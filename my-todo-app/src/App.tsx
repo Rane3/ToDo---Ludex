@@ -10,7 +10,7 @@ function App() {
     {
       id: '1',
       name: 'Default List',
-      todoItems: [{ id: '1', text: 'Default Item', completed: false}]
+      todoItems: [{ id: '1', text: 'Default Item', completed: false, listId: '1'}]
     }
   ]);
   const [selectedList, setSelectedList] = useState<SelectedTodoList>(todoLists[0]);

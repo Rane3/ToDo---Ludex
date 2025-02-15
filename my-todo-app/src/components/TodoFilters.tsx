@@ -3,9 +3,10 @@ import "../styles/TodoFilterStyles.css";
 import React from 'react';
 import { TodoFilterProps } from "../types/todo";
 
+/**
+ * Used for the filter box component
+ */
 const TodoFilters: FC<TodoFilterProps> = ({ currentFilter, setFilter }) => {
-
-
   return (
     <div className="project-filters-box" data-aos="fade-up">
       {["View All", "Completed", "Pending"].map((filter) => (
