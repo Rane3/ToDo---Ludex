@@ -155,7 +155,7 @@
 
 .checkbox-wrapper-31 .stroke {
     fill: none;
-    stroke: #fff;
+    stroke:  var(--font-color);
     stroke-miterlimit: 10;
     stroke-width: 2px;
     stroke-dashoffset: 100;
@@ -166,7 +166,7 @@
 
 .checkbox-wrapper-31 .check {
     fill: none;
-    stroke: #fff;
+    stroke: var(--font-color);
     stroke-linecap: round;
     stroke-linejoin: round;
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Switch = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
-    return (localStorage.getItem("theme") as "dark" | "light") || "light";
+    return (localStorage.getItem("theme") as "dark" | "light") || "dark";
   });
 
   useEffect(() => {
