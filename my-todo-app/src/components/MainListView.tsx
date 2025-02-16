@@ -3,7 +3,7 @@ import { SelectedTodoList,Todo } from '../types/todo';
 import TodoItem from '../components/TodoItem.tsx';
 import '../styles/MainViewStyles.css';
 import TodoFilters from './TodoFilters.tsx';
-import Switch from './ThemeSwitch.tsx';
+
 
 import { useLocalStorage } from '../utils/localStorage.tsx'; 
 
@@ -60,7 +60,7 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
             <div id="main-view-top">
                 <div id="main-view-top-filters">
                     <div id='list-header'>{name}</div>
-                    <Switch/>
+               
                     <TodoFilters currentFilter={currentFilter} setFilter={setFilter} />
                 </div>
                 {filteredTodos.map((todo) => (

@@ -2,13 +2,17 @@ import { FC } from "react";
 import "../styles/TodoFilterStyles.css";
 import React from 'react';
 import { TodoFilterProps } from "../types/todo";
+import Switch from "./ThemeSwitch.tsx";
 
 /**
  * Used for the filter box component
  */
 const TodoFilters: FC<TodoFilterProps> = ({ currentFilter, setFilter }) => {
   return (
+    <>
+       
     <div className="project-filters-box" data-aos="fade-up">
+    <Switch/>
       {["View All", "Completed", "Pending"].map((filter) => (
         <div className="content" key={filter}>
           <label className="checkBox">
@@ -25,6 +29,7 @@ const TodoFilters: FC<TodoFilterProps> = ({ currentFilter, setFilter }) => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 
