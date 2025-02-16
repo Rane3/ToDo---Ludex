@@ -1,16 +1,16 @@
 import React, { FC, useState, useEffect } from 'react';
-import { SelectedTodoList,Todo } from '../types/todo';
+import { SelectedTodoList, Todo } from '../types/todo';
 import TodoItem from '../components/TodoItem.tsx';
 import '../styles/MainViewStyles.css';
 import TodoFilters from './TodoFilters.tsx';
 
 
-import { useLocalStorage } from '../utils/localStorage.tsx'; 
+import { useLocalStorage } from '../utils/localStorage.tsx';
 
 /**
  * Main view, allows users to add toDo's delete them and move them 
  */
-const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
+const MainListView: FC<SelectedTodoList> = ({ id, todoItems, name }) => {
     const [currentTodo, setCurrentTodo] = useState('');
 
     const [currentTodoItems, setCurrentTodoItems] = useLocalStorage<Todo[]>('todoItems', todoItems);
@@ -19,7 +19,7 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
     useEffect(() => {
         localStorage.setItem('todoItems', JSON.stringify(currentTodoItems));
     }, [currentTodoItems]);
-
+ 
     const setCompleted = (id: string, completed: boolean) => {
         setCurrentTodoItems((prevItems) =>
             prevItems.map((item) =>
@@ -34,7 +34,7 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
             id: crypto.randomUUID(),
             text: currentTodo,
             completed: false,
-            listId:id
+            listId: id
         };
         setCurrentTodoItems((prevLists) => [...prevLists, newTodo]);
         setCurrentTodo('');
@@ -60,10 +60,10 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
             <div id="main-view-top">
                 <div id="main-view-top-filters">
                     <div id='list-header'>{name}</div>
-               
+
                     <TodoFilters currentFilter={currentFilter} setFilter={setFilter} />
                 </div>
-                {filteredTodos.map((todo,index) => (
+                {filteredTodos.map((todo, index) => (
                     <TodoItem index={index} listId={id} deleteTodo={deleteTodo} key={todo.id} todo={todo} setCompleted={setCompleted} />
                 ))}
                 {fillerItems.map((_, index) => (
@@ -78,6 +78,7 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
                     <input value={currentTodo} type="text" name="text" onChange={(e) => setCurrentTodo(e.target.value)} placeholder="Add Task" />
                 </div>
             </div>
+            
         </section>
     );
 };

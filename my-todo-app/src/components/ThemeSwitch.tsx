@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+// from https://uiverse.io/satyamchaudharydev/shy-earwig-18
 const Switch = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     return (localStorage.getItem("theme") as "dark" | "light") || "dark";
