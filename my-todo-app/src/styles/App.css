@@ -4,25 +4,47 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  /* Prevents scrolling */
   font-weight: 500;
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  color: rgb(223, 220, 220);;
+  color: var(--font-color)
 }
-button{
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
+button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
+
 :root {
   --dark-background: #2b2929;
   --dark-container-background: #212020;
-  --light-background: #f0f0f0;
-  --light-container-background: #ffffff;
+  --dark-secondary-container-background:#2d2d2de0;
+  --dark-input-background-color: rgb(26, 26, 26);
+  --dark-input-box-shadow: 0 0 0px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
+  --dark-font-color: white;
+  --dark-secondary-font-color: c3c2c2;
+  --dark-secondary-container-box-shadow:0px 0px 0px 2px #4b4b4b;;
+  --dark-separator-color: rgba(252, 250, 250, 0.171) ;
+  --dark-checkbox-fill:#202020;
+  --dark-secondary-container-hover:  #464545b6;
+  --light-background: #d4d3d3;
+  --light-container-background: #b4b1b1;
+  --light-separator-color: rgba(83, 82, 82, 0.171) ;
+  --light-input-background-color: rgb(240, 240, 240);
+  --light-secondary-container-box-shadow:0px 0px 0px 2px #a3a3a3;;
+  --light-input-box-shadow: 0 0 0px 1px rgba(150, 150, 150, 0.5), 0 0 0 .15vw transparent;
+  --light-font-color: #4e4d4d;
+  --light-secondary-font-color: #666666;
+  --light-secondary-container-background:#dfdfdfe0;
+  --light-secondary-container-hover:  #9b9b9bb6;
+  --light-checkbox-fill:#ffffff;
 
   /* Default to dark mode */
   --background: var(--dark-background);
   --container-background: var(--dark-container-background);
+  --font-color: var(--dark-font-color);
+  --secondary-font-color: var(--dark-secondary-font-color);
+  --input-box-shadow: var(--dark-input-box-shadow);
+  --input-background-color: var(--dark-input-background-color);
 }
 
 #root {
@@ -32,17 +54,37 @@ button{
   align-items: flex-end;
   background: var(--background);
 }
-
+input::placeholder{
+  color: var(--secondary-font-color);
+}
 /* Light Theme */
 [data-theme="light"] {
   --background: var(--light-background);
   --container-background: var(--light-container-background);
+  --font-color: var(--light-font-color);
+  --separator-color:var(--light-separator-color);
+  --secondary-font-color: var(--light-secondary-font-color);
+  --checkbox-fill:var(--light-checkbox-fill);
+  --input-box-shadow: var(--light-input-box-shadow);
+  --input-background-color: var(--light-input-background-color);
+  --secondary-container-box-shadow:var(--light-secondary-container-box-shadow);
+  --secondary-container-background: var(--light-secondary-container-background);
+  --secondary-container-hover: var(--light-secondary-container-hover);
 }
 
 /* Dark Theme */
 [data-theme="dark"] {
   --background: var(--dark-background);
+  --checkbox-fill:var(--dark-checkbox-fill);
+  --secondary-container-background: var(--dark-secondary-container-background);
   --container-background: var(--dark-container-background);
+  --font-color: var(--dark-font-color);
+  --secondary-container-box-shadow:var(--dark-secondary-container-box-shadow);
+  --secondary-font-color: var(--dark-secondary-font-color);
+  --separator-color:var(--dark-separator-color);
+  --input-box-shadow: var(--dark-input-box-shadow);
+  --input-background-color: var(--dark-input-background-color);
+  --secondary-container-hover: var(--dark-secondary-container-hover);
 }
 
 #main-list-view {

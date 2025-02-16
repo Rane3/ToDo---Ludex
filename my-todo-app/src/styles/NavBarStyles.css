@@ -36,21 +36,20 @@
   border-radius: 50px;
   height: 3rem;
   font-size: 28px;
-  color: white;
-  background-color: rgb(26 26 26);
+  color: var(--font-color);
+  background-color: var(--container-background);
   display: flex;
-  box-shadow: 0 0 0px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
+  box-shadow: var(--input-box-shadow);
   flex-direction: row;
   justify-content: center;
+
 }
 
 .add-button:hover {
   box-shadow: 0 0 5px .15vw rgb(249 249 249 / 19%);
 }
 
-.add-button:active {
-  box-shadow: 0 0 0 .15vw rgb(87, 87, 87);
-}
+
 
 .list-item {
   width: 85%;
@@ -62,7 +61,7 @@
   padding: 0rem 0.7rem;
   word-wrap: break-word;
   display: flex;
-  color: white;
+  color: var(--font-color);
   cursor:pointer;
   border-radius: 8px;
   transition: 0.4s;
@@ -85,7 +84,7 @@
   height: 100%;
   cursor:pointer;
   background: transparent;
-  color: #c3c2c2;
+  color: var(--secondary-font-color);
   margin-left: 0.5rem;
   text-align: start;
   border: none;
@@ -96,9 +95,9 @@
 .custom-input {
   font-weight: 500;
   font-size: 1.2rem;
-  color: #fff;
-  background-color: rgb(26 26 26);
-  box-shadow: 0 0 0px 1px rgb(85 85 85 / 50%), 0 0 0 .15vw transparent;
+  color:var(--secondary-font-color);
+  background-color: var(--container-background);
+  box-shadow: var(--input-box-shadow);
   border-radius: 0.4vw;
   border: none;
   outline: none;
