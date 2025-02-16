@@ -8,6 +8,8 @@
     #main-list-view{
         height: 100%;
         border-radius: 0px;
+        max-width: 1150px;
+        min-width: 400px;
     }
     #main-view-top-filters{
         flex-direction: column;
@@ -46,4 +48,19 @@
         flex-direction: column;
         justify-content: space-between;
     }
+
+}
+@media screen and (max-width: 550px){
+    .project-filters-box{
+        padding-left: 1rem !important;
+
+    }
+    #list-header{
+        padding-left:  1rem !important;
+    }
+    .content{
+        min-width: 7rem !important;
+        font-size: smaller !important;
+    }
+    
 }
