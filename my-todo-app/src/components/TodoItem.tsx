@@ -7,17 +7,19 @@ import { TodoItemProps } from '../types/todo';
 /**
  * Used for displaying Todo item, and for deleting it. Uses listId to know which items to display
  */
-const TodoItem: FC<TodoItemProps> = ({ listId, todo, setCompleted, deleteTodo }) => {
+const TodoItem: FC<TodoItemProps> = ({ listId, todo, setCompleted, deleteTodo, index }) => {
     const handleCheckboxChange = () => {
-    
+
         setCompleted(todo.id, !todo.completed);
     };
     return (
         <>
             {listId === todo.listId ? (
-                <div className="todo-item" key={todo.id}>
+                <div data-aos="fade-up"
+                    data-aos-delay={150 * index} className="todo-item" key={todo.id}>
                     <div className="checkbox-wrapper-31">
                         <input
+
                             checked={todo.completed}
                             onChange={handleCheckboxChange}
                             type="checkbox"

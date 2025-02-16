@@ -63,8 +63,8 @@ const MainListView: FC<SelectedTodoList> = ({ id,todoItems, name }) => {
                
                     <TodoFilters currentFilter={currentFilter} setFilter={setFilter} />
                 </div>
-                {filteredTodos.map((todo) => (
-                    <TodoItem listId={id} deleteTodo={deleteTodo} key={todo.id} todo={todo} setCompleted={setCompleted} />
+                {filteredTodos.map((todo,index) => (
+                    <TodoItem index={index} listId={id} deleteTodo={deleteTodo} key={todo.id} todo={todo} setCompleted={setCompleted} />
                 ))}
                 {fillerItems.map((_, index) => (
                     <div key={`filler-${index}`} className='filler-item'></div>

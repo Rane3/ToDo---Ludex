@@ -38,8 +38,8 @@ const ListNav: FC<TodoListProps> = ({ todoLists, setSelectedList, setToDoLists }
     return (
         <nav id='list-nav'>
             <div id='nav-top'>
-                {storedTodoLists.map((list) => (
-                    <div className='list-item' key={list.id}>
+                {storedTodoLists.map((list,index) => (
+                    <div  data-aos="fade-right"    data-aos-delay={150 * index} className='list-item' key={list.id}>
                         <img
                             className='item-icon'
                             src={theme === "light" ? '/icons/light-list-icon.png' : '/icons/dark-list-icon.png'}

@@ -20,6 +20,8 @@ export interface TodoListProps  {
 //Used to control a current item, 1 to 1 relationship with listId
 export interface  TodoItemProps  {
     todo: Todo;
+    //index is used for data-aos animation delay
+    index: number;
     listId: string;
     deleteTodo: (id: string) => void;
     setCompleted: (id: string, completed: boolean) => void;

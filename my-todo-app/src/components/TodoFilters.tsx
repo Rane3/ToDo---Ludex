@@ -11,7 +11,7 @@ const TodoFilters: FC<TodoFilterProps> = ({ currentFilter, setFilter }) => {
   return (
     <>
        
-    <div className="project-filters-box" data-aos="fade-up">
+    <div className="project-filters-box" >
     <Switch/>
       {["View All", "Completed", "Pending"].map((filter) => (
         <div className="content" key={filter}>
