@@ -14,8 +14,13 @@ function App() {
   const [todoLists, setTodoLists] = useState<SelectedTodoList[]>([
     {
       id: '1',
-      name: 'Default List',
-      todoItems: [{ id: '1', text: 'Default Item', completed: false, listId: '1'}]
+      name: 'My Day',
+      todoItems: [{ id: '1', text: 'Delete me', completed: false, listId: '1'}]
+    },
+    {
+      id: '2',
+      name: 'Important',
+      todoItems: []
     }
   ]);
   const [selectedList, setSelectedList] = useState<SelectedTodoList>(todoLists[0]);

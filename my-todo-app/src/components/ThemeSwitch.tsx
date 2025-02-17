@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 // from https://uiverse.io/satyamchaudharydev/shy-earwig-18
 const Switch = () => {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    return (localStorage.getItem("theme") as "dark" | "light") || "dark";
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    return (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
@@ -20,7 +20,7 @@ const Switch = () => {
       <label className="switch">
         <input
           type="checkbox"
-          checked={theme === "dark"}
+          checked={theme === 'dark'}
           onChange={toggleTheme}
         />
         <span className="slider" />
@@ -61,7 +61,7 @@ const StyledWrapper = styled.div`
 
   .slider:before {
     position: absolute;
-    content: "";
+    content: '';
     height: var(--size-of-icon, 1.4em);
     width: var(--size-of-icon, 1.4em);
     border-radius: 20px;
@@ -77,9 +77,13 @@ const StyledWrapper = styled.div`
   }
 
   input:checked + .slider:before {
-    left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+    left: calc(
+      100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em))
+    );
     background: #303136;
-    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+    box-shadow:
+      inset -3px -2px 5px -2px #8983f7,
+      inset -10px -4px 0 0 #a3dafb;
   }
 `;
 
