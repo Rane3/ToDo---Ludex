@@ -1,5 +1,8 @@
 # Todo App
 
+## Deployment URL (Netlify)
+https://rayanekn-todo-app.netlify.app/
+
 ## Description
 This is a basic Todo list app with animations, a theme switcher, and multiple list management.
 
